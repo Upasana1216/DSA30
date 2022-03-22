@@ -9,6 +9,8 @@ int main()
         do
         {
             cout << i << "\n";
+            if(j==2 && i==1)
+                break;
             j++;
         } while (j <= 3);
         i++;
