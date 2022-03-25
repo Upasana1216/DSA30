@@ -14,13 +14,13 @@ void shiftall(int arr[], int left, int right)
 		// Condition to check if the left
 		// and the right elements are
 		// negative
-		if (arr[left] < 0 && arr[right] < 0)
+		if (arr[left] < 0 && arr[right] < 0)//negative(left) correct
 			left += 1;
 
 		// Condition to check if the left
 		// pointer element is positive and
 		// the right pointer element is negative
-		else if (arr[left] > 0 && arr[right] < 0)
+		else if (arr[left] > 0 && arr[right] < 0) //left- +ve. right -ve (swaping)
 		{
 			int temp = arr[left];
 			arr[left] = arr[right];
@@ -31,7 +31,7 @@ void shiftall(int arr[], int left, int right)
 
 		// Condition to check if both the
 		// elements are positive
-		else if (arr[left] > 0 && arr[right] > 0)
+		else if (arr[left] > 0 && arr[right] > 0) //right ->correct
 			right -= 1;
 		else
 		{
