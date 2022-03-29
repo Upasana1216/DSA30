@@ -1,7 +1,9 @@
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& a) {
-        int fr=0,fc=0;
+        int fr=0,fc=0;//edge cases
+
+        //identifcation and marker
         for(int i=0;i<a.size();i++){
             
             for(int j=0;j<a[i].size();j++){
@@ -20,6 +22,7 @@ public:
             }
         }
         
+        //changes
         for(int i=a.size()-1;i>=1;i--){
             for(int j=a[i].size()-1;j>=1;j--){
                 

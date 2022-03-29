@@ -11,12 +11,12 @@ void rotate(vector < vector < int >> & matrix) {
   }
   //reversing each row of the matrix
   for (int i = 0; i < n; i++) {
-    reverse(matrix[i].begin(), matrix[i].end());
+    reverse(matrix[i].begin(), matrix[i].end()); //reverse matrix row wise
   }
 }
 
 int main() {
-  vector < vector < int >> arr;
+  vector < vector < int >> arr;//2d matrix 1 2 3 4
   arr =  {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
   rotate(arr);
   cout << "Rotated Image" << endl;

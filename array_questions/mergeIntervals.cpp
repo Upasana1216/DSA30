@@ -11,13 +11,15 @@ struct Interval
 
 // Function used in sort
 bool mycomp(Interval a, Interval b)
-{ return a.s < b.s; }
+{ 
+	return a.s < b.s; 
+}
 
 void mergeIntervals(Interval arr[], int n)
 {
 	// Sort Intervals in increasing order of
 	// start time
-	sort(arr, arr+n, mycomp);
+	sort(arr, arr+n, mycomp);// sorting comparator -> comparision + sprting acc to you
 
 	int index = 0; // Stores index of last element
 	// in output array (modified arr[])
