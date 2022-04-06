@@ -10,6 +10,7 @@ int longestConsecutive(vector < int > & nums) {
   int longestStreak = 0;
 
   for (int num: nums) {
+    
     if (!hashSet.count(num - 1)) {
       int currentNum = num;
       int currentStreak = 1;

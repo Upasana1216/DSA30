@@ -23,7 +23,7 @@ class Solution {
 };
 
 int main() {
-  string str = "takeUforward";
+  string str = "upasanaSingh";
   Solution obj;
   cout << "The length of the longest substring without repeating characters is " << obj.lengthofLongestSubstring(str);
   return 0;

@@ -14,7 +14,7 @@ class Solution {
         if (st.empty())
           leftsmall[i] = 0;
         else
-          leftsmall[i] = st.top() + 1;
+          leftsmall[i] = st.top() + 1;//i+1
         st.push(i);
       }
       // clear the stack to be re-used

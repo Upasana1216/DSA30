@@ -10,11 +10,13 @@ int maxLen(int A[], int n)
             maxi = i + 1; 
         }
         else {
-            if(mpp.find(sum) != mpp.end()) {
+            //2 cases-> sum-> into hash or not
+            if(mpp.find(sum) != mpp.end()) { // subarray len
+
                 maxi = max(maxi, i - mpp[sum]); 
             }
             else {
-                mpp[sum] = i;
+                mpp[sum] = i; //store into hash
             }
         }   
     }

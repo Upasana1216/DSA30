@@ -1,105 +1,128 @@
-// CPP program for array
-// implementation of queue
+// C++ program to implement a queue using an array
 #include <bits/stdc++.h>
 using namespace std;
 
-// A structure to represent a queue
-class Queue {
-public:
-	int front, rear, size;
-	unsigned capacity;
-	int* array;
+struct Queue {
+	int front, rear, capacity;
+	int* queue;
+	Queue(int c)
+	{
+		front = rear = 0;
+		capacity = c;
+		queue = new int;
+	}
+
+	~Queue() { delete[] queue; }
+
+	// function to insert an element
+	// at the rear of the queue
+	void queueEnqueue(int data)//20
+	{
+		// check queue is full or not
+		if (capacity == rear) {//queue is full
+			printf("\nQueue is full\n");
+			return;
+		}
+
+		// insert element at the rear
+		else {
+			queue[rear] = data; //20 30 40
+			rear++;
+		}
+		return;
+	}
+
+	// function to delete an element
+	// from the front of the queue
+	void queueDequeue() //20 30 40 60
+	{
+		// if queue is empty
+		if (front == rear) {
+			printf("\nQueue is empty\n");
+			return;
+		}
+		// 20 30 40 60
+		// 0  1  2  3
+
+		// shift all the elements from index 2 till rear
+		// to the left by one
+		else {
+			for (int i = 0; i < rear - 1; i++) {
+				queue[i] = queue[i + 1];//40 60 
+			}
+
+			// decrement rear
+			rear--;
+		}
+		return;
+	}
+
+	// print queue elements
+	void queueDisplay()
+	{
+		int i;
+		if (front == rear) {//front=rear=0
+			printf("\nQueue is Empty\n");
+			return;
+		}
+
+		// traverse front to rear and print elements
+		for (i = front; i < rear; i++) {
+			printf(" %d <-- ", queue[i]);
+		}
+		return;
+	}
+
+	// print front of queue
+	void queueFront()
+	{
+		if (front == rear) {
+			printf("\nQueue is Empty\n");
+			return;
+		}
+		printf("\nFront Element is: %d", queue[front]);
+		return;
+	}
 };
 
-// function to create a queue
-// of given capacity.
-// It initializes size of queue as 0
-Queue* createQueue(unsigned capacity)
-{
-	Queue* queue = new Queue();
-	queue->capacity = capacity;
-	queue->front = queue->size = 0;
-
-	// This is important, see the enqueue
-	queue->rear = capacity - 1;
-	queue->array = new int[queue->capacity];
-	return queue;
-}
-
-// Queue is full when size
-// becomes equal to the capacity
-int isFull(Queue* queue)
-{
-	return (queue->size == queue->capacity);
-}
-
-// Queue is empty when size is 0
-int isEmpty(Queue* queue)
-{
-	return (queue->size == 0);
-}
-
-// Function to add an item to the queue.
-// It changes rear and size
-void enqueue(Queue* queue, int item)
-{
-	if (isFull(queue))
-		return;
-	queue->rear = (queue->rear + 1)
-				% queue->capacity;
-	queue->array[queue->rear] = item;
-	queue->size = queue->size + 1;
-	cout << item << " enqueued to queue\n";
-}
-
-// Function to remove an item from queue.
-// It changes front and size
-int dequeue(Queue* queue)
-{
-	if (isEmpty(queue))
-		return INT_MIN;
-	int item = queue->array[queue->front];
-	queue->front = (queue->front + 1)
-				% queue->capacity;
-	queue->size = queue->size - 1;
-	return item;
-}
-
-// Function to get front of queue
-int front(Queue* queue)
-{
-	if (isEmpty(queue))
-		return INT_MIN;
-	return queue->array[queue->front];
-}
-
-// Function to get rear of queue
-int rear(Queue* queue)
-{
-	if (isEmpty(queue))
-		return INT_MIN;
-	return queue->array[queue->rear];
-}
-
 // Driver code
-int main()
+int main(void)
 {
-	Queue* queue = createQueue(1000);
+	// Create a queue of capacity 4
+	Queue q(4);
 
-	enqueue(queue, 10);
-	enqueue(queue, 20);
-	enqueue(queue, 30);
-	enqueue(queue, 40);
+	// print Queue elements
+	q.queueDisplay();
 
-	cout << dequeue(queue)
-		<< " dequeued from queue\n";
+	// inserting elements in the queue
+	q.queueEnqueue(20);
+	q.queueEnqueue(30);
+	q.queueEnqueue(40);
+	q.queueEnqueue(50);
 
-	cout << "Front item is "
-		<< front(queue) << endl;
-	cout << "Rear item is "
-		<< rear(queue) << endl;
+	// print Queue elements
+	q.queueDisplay();
+
+	// insert element in the queue
+	q.queueEnqueue(60);
+
+	// print Queue elements
+	q.queueDisplay();
+
+	q.queueDequeue();
+	q.queueDequeue();
+
+	printf("\n\nafter two node deletion\n\n");
+
+	// print Queue elements
+	q.queueDisplay();
+
+	// print front of the queue
+	q.queueFront();
 
 	return 0;
 }
 
 
+//Queryyyy!!
+https://leetcode.com/problems/count-of-smaller-numbers-after-self/
